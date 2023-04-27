@@ -1,0 +1,81 @@
+body {
+    background-color: #dadada;
+
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Players {
+    margin: 50px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.PlayerRow {
+    background-color: #1a1a1a;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.Difficulty {
+    display: flex;
+    margin: 5px;
+}
+
+.fa {
+    color: #999999;
+    margin: 2px;
+}
+
+.checked {
+    color: #ffcc00;
+}
+
+.PlayerPicks {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.CivIcon {
+    width: 25px;
+    height: 25px;
+}
+
+.AddPlayer {
+    margin: 5px;
+    padding: 5px;
+
+    height: 30px;
+    width: 30px;
+
+    border-radius: 100%;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    font-size: 20px;
+}
+
+.Generate {
+    margin: 50px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    font-size: 20px;
+}
