@@ -1,4 +1,62 @@
-const civs = [
+const filthyRobot = [
+    [
+        { civ: 'Babylon', leader: 'Nebuchadnezzar II' },
+        { civ: 'Egypt', leader: 'Ramesses II' },
+        { civ: 'England', leader: 'Elizabeth' },
+        { civ: 'Ethiopia', leader: 'Haile Selassie' },
+        { civ: 'Inca', leader: 'Pachacuti' },
+        { civ: 'Korea', leader: 'Sejong' },
+        { civ: 'Persia', leader: 'Darius I' },
+        { civ: 'Poland', leader: 'Casimir III' },
+    ],
+    [
+        { civ: 'Arabia', leader: 'Harun al-Rashid' },
+        { civ: 'Aztec', leader: 'Montezuma' },
+        { civ: 'China', leader: 'Wu Zetian' },
+        { civ: 'Greece', leader: 'Alexander' },
+        { civ: 'Huns', leader: 'Attila' },
+        { civ: 'Maya', leader: 'Pacal' },
+        { civ: 'Russia', leader: 'Catherine' },
+        { civ: 'Shoshone', leader: 'Pocatello' },
+        { civ: 'Spain', leader: 'Isabella' },
+    ],
+    [
+        { civ: 'Brazil', leader: 'Pedro II' },
+        { civ: 'Byzantium', leader: 'Theodora' },
+        { civ: 'Celts', leader: 'Boudicca' },
+        { civ: 'Germany', leader: 'Bismarck' },
+        { civ: 'India', leader: 'Gandhi' },
+        { civ: 'Indonesia', leader: 'Gajah Mada' },
+        { civ: 'Mongolia', leader: 'Genghis Khan' },
+        { civ: 'Morocco', leader: 'Ahmad al-Mansur' },
+        { civ: 'Ottomans', leader: 'Suleiman' },
+        { civ: 'Portugal', leader: 'Maria I' },
+        { civ: 'Rome', leader: 'Augustus Caesar' },
+        { civ: 'Siam', leader: 'Ramkhamhaeng' },
+        { civ: 'Songhai', leader: 'Askia' },
+        { civ: 'Sweden', leader: 'Gustavus Adolphus' },
+        { civ: 'Zulu', leader: 'Shaka' },
+    ],
+    [
+        { civ: 'America', leader: 'Washington' },
+        { civ: 'Assyria', leader: 'Ashurbanipal' },
+        { civ: 'Austria', leader: 'Maria Theresa' },
+        { civ: 'Carthage', leader: 'Dido' },
+        { civ: 'Denmark', leader: 'Harald Bluetooth' },
+        { civ: 'Netherlands', leader: 'William' },
+    ],
+    [
+        { civ: 'France', leader: 'Napoleon' },
+        { civ: 'Japan', leader: 'Oda Nobunaga' },
+        { civ: 'Polynesia', leader: 'Kamehameha' },
+    ],
+    [
+        { civ: 'Iroquois', leader: 'Hiawatha' },
+        { civ: 'Venice', leader: 'Enrico Dandolo' },
+    ],
+];
+
+const peaceful = [
     [
         { civ: 'Poland', leader: 'Casimir III' },
         { civ: 'Babylon', leader: 'Nebuchadnezzar II' },
@@ -56,6 +114,47 @@ const civs = [
     ],
 ];
 
+const lists = [
+    { name: 'Filthy Robot', list: filthyRobot },
+    { name: 'Peaceful', list: peaceful },
+];
+
+const getStars = (checked) => {
+    let stars = '';
+
+    for (let i = 1; i <= 5; i++) {
+        if (i <= checked) {
+            stars += `<div class="fa fa-star checked"></div>`;
+        } else {
+            stars += `<div class="fa fa-star"></div>`;
+        }
+    }
+
+    return stars;
+};
+
+const selectTierList = () => {
+    const tierListName = document.getElementById('TierListSelector').value;
+    const tierList = lists.find((x) => x.name === tierListName).list;
+
+    document.getElementById('CurrentTierList').innerHTML = tierList
+        .map((tier) =>
+            tier
+                .map(
+                    (civ) =>
+                        `<img class="CivIcon" src='./icons/${civ.civ}.webp' alt='${civ.civ}, ${civ.leader}' title='${civ.civ}, ${civ.leader}'>`
+                )
+                .join('')
+        )
+        .map(
+            (tier, index) =>
+                `<section class="Tier"><div>${getStars(
+                    index
+                )}</div><div class="TierCivs">${tier}</div></section>`
+        )
+        .join('');
+};
+
 const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -100,7 +199,11 @@ const addRow = () => {
             <div onClick='selectDifficulty(${rows}, 4)' id="Player ${rows} Difficulty 4" class="fa fa-star"></div>
             <div onClick='selectDifficulty(${rows}, 5)' id="Player ${rows} Difficulty 5" class="fa fa-star"></div>
         </section>
-        <div class="PlayerPicks" id='Player ${rows} Picks'></div>
+        <div class="PlayerPicks" id='Player ${rows} Picks'>
+            <img class="CivIcon" src='./icons/None.png'>
+            <img class="CivIcon" src='./icons/None.png'>
+            <img class="CivIcon" src='./icons/None.png'>
+        </div>
     </section>`;
 
     if (rows >= 7) {
@@ -109,8 +212,11 @@ const addRow = () => {
 };
 
 const generateCivs = () => {
+    const tierListName = document.getElementById('TierListSelector').value;
+    const tierList = lists.find((x) => x.name === tierListName).list;
+
     // randomise the civs in each tier
-    const civsLeft = JSON.parse(JSON.stringify(civs)).map((civTier) =>
+    const civsLeft = JSON.parse(JSON.stringify(tierList)).map((civTier) =>
         shuffleArray(civTier)
     );
 
@@ -129,11 +235,18 @@ const generateCivs = () => {
         choices.push(civsLeft[player.difficulty].pop());
 
         document.getElementById(`Player ${player.player} Picks`).innerHTML =
-            choices.map(
-                (x) =>
-                    `<img class="CivIcon" src='./icons/${x.civ}.webp' alt='${x.civ}, ${x.leader}' title='${x.civ}, ${x.leader}'>`
-            );
+            choices
+                .map(
+                    (x) =>
+                        `<img class="CivIcon" src='./icons/${x.civ}.webp' alt='${x.civ}, ${x.leader}' title='${x.civ}, ${x.leader}'>`
+                )
+                .join('');
     });
 };
 
 addRow();
+
+document.getElementById('TierListSelector').innerHTML = lists
+    .map((x) => `<option value="${x.name}">${x.name}</option>`)
+    .join('');
+selectTierList();

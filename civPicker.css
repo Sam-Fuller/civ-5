@@ -1,10 +1,68 @@
 body {
+    font-family: 'Helvetica', Arial, Lucida Grande, sans-serif !important;
+
     background-color: #dadada;
 
     height: 100vh;
     padding: 0;
     margin: 0;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.TierPicker {
+    height: 100vh;
+    width: 300px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Tier {
+    margin: 10px;
+
+    background-color: #1a1a1a;
+    padding: 5px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TierInfo {
+    width: 300px;
+    background-color: #1a1a1a;
+    padding: 5px;
+    border-radius: 5px;
+
+    color: #ffffff;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.TierCivs {
+    width: 300px;
+    padding-top: 5px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.CivPicker {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
