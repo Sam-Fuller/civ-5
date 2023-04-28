@@ -149,7 +149,7 @@ const selectTierList = () => {
         .map(
             (tier, index) =>
                 `<section class="Tier"><div>${getStars(
-                    index
+                    5 - index
                 )}</div><div class="TierCivs">${tier}</div></section>`
         )
         .join('');
