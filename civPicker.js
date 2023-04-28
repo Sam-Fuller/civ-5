@@ -102,6 +102,10 @@ const addRow = () => {
         </section>
         <div class="PlayerPicks" id='Player ${rows} Picks'></div>
     </section>`;
+
+    if (rows >= 7) {
+        document.getElementById('AddPlayerButton').classList.add('Hidden');
+    }
 };
 
 const generateCivs = () => {

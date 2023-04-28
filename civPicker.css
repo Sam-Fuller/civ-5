@@ -79,3 +79,7 @@ body {
     border: none;
     font-size: 20px;
 }
+
+.Hidden {
+    display: none;
+}
