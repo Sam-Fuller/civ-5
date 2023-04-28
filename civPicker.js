@@ -216,7 +216,7 @@ const generateCivs = () => {
     const tierList = lists.find((x) => x.name === tierListName).list;
 
     // randomise the civs in each tier
-    const civsLeft = JSON.parse(JSON.stringify(tierList)).map((civTier) =>
+    let civsLeft = JSON.parse(JSON.stringify(tierList)).map((civTier) =>
         shuffleArray(civTier)
     );
 
@@ -226,6 +226,19 @@ const generateCivs = () => {
     // for each player generate 3 choices
     difficulties.forEach((player) => {
         const choices = [];
+
+        // if there are less than 2 civs in the tier above, repopulate the tier
+        civsLeft = civsLeft.map((civTier, index) => {
+            if (civTier.length < 2) {
+                const randomCivs = JSON.parse(JSON.stringify(tierList)).map(
+                    (civTier) => shuffleArray(civTier)
+                );
+
+                return randomCivs[index].concat(civTier);
+            }
+
+            return civTier;
+        });
 
         // one choice from the tier above
         // two from the correct tier
