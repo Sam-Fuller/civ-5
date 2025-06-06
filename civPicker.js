@@ -1,3 +1,61 @@
+const competative = [
+    [
+        { civ: 'Babylon', leader: 'Nebuchadnezzar II' },
+        { civ: 'Egypt', leader: 'Ramesses II' },
+        { civ: 'England', leader: 'Elizabeth' },
+        { civ: 'Inca', leader: 'Pachacuti' },
+        { civ: 'Korea', leader: 'Sejong' },
+        { civ: 'Poland', leader: 'Casimir III' },
+        { civ: 'Shoshone', leader: 'Pocatello' },
+        { civ: 'Huns', leader: 'Attila' },
+        { civ: 'Aztec', leader: 'Montezuma' },
+        { civ: 'Russia', leader: 'Catherine' },
+    ],
+    [
+        { civ: 'Arabia', leader: 'Harun al-Rashid' },
+        { civ: 'China', leader: 'Wu Zetian' },
+        { civ: 'Greece', leader: 'Alexander' },
+        { civ: 'Maya', leader: 'Pacal' },
+        { civ: 'Spain', leader: 'Isabella' },
+        { civ: 'Ethiopia', leader: 'Haile Selassie' },
+        { civ: 'Persia', leader: 'Darius I' },
+        { civ: 'Zulu', leader: 'Shaka' },
+    ],
+    [
+        { civ: 'Brazil', leader: 'Pedro II' },
+        { civ: 'Byzantium', leader: 'Theodora' },
+        { civ: 'Celts', leader: 'Boudicca' },
+        { civ: 'India', leader: 'Gandhi' },
+        { civ: 'Mongolia', leader: 'Genghis Khan' },
+        { civ: 'Morocco', leader: 'Ahmad al-Mansur' },
+        { civ: 'Siam', leader: 'Ramkhamhaeng' },
+        { civ: 'Songhai', leader: 'Askia' },
+        { civ: 'America', leader: 'Washington' },
+        { civ: 'Austria', leader: 'Maria Theresa' },
+        { civ: 'Netherlands', leader: 'William' },
+    ],
+    [
+        { civ: 'Assyria', leader: 'Ashurbanipal' },
+        { civ: 'Denmark', leader: 'Harald Bluetooth' },
+        { civ: 'Rome', leader: 'Augustus Caesar' },
+        { civ: 'Japan', leader: 'Oda Nobunaga' },
+        { civ: 'Germany', leader: 'Bismarck' },
+        { civ: 'Indonesia', leader: 'Gajah Mada' },
+        { civ: 'Sweden', leader: 'Gustavus Adolphus' },
+    ],
+    [
+        { civ: 'France', leader: 'Napoleon' },
+        { civ: 'Polynesia', leader: 'Kamehameha' },
+        { civ: 'Portugal', leader: 'Maria I' },
+        { civ: 'Carthage', leader: 'Dido' },
+        { civ: 'Ottomans', leader: 'Suleiman' },
+    ],
+    [
+        { civ: 'Iroquois', leader: 'Hiawatha' },
+        { civ: 'Venice', leader: 'Enrico Dandolo' },
+    ],
+];
+
 const filthyRobot = [
     [
         { civ: 'Babylon', leader: 'Nebuchadnezzar II' },
@@ -115,6 +173,7 @@ const peaceful = [
 ];
 
 const lists = [
+    { name: 'Competative', list: competative },
     { name: 'Filthy Robot', list: filthyRobot },
     { name: 'Peaceful', list: peaceful },
 ];
